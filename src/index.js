@@ -8,7 +8,7 @@ import { filterUsers } from "./modules/filterUses";
 import { sortUsers } from "./modules/sortUsers";
 import { searchUsers } from "./modules/searchUsers";
 
-const url = 'https://grey-amethyst-hydrogen.glitch.me/users/'
+const url = 'https://grey-amethyst-hydrogen.glitch.me/use' //rs/
 
 window.userService = new UserService // мы создаем новое поле в глобальном объекте window, после чего это поле может вызываться откуда угодно.
 userService.getData(url).then(data => {

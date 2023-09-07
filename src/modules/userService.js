@@ -1,21 +1,32 @@
 export class UserService {
-    getData(url, requestParameters = '') {
-        return fetch(`${url}${requestParameters}`).then(response => response.json())
+    getData(url, urlParameters = '') {
+        return fetch(`${url}${urlParameters}`)
+            .then(response => response.json())
+            .catch(error => {
+                console.log(`Ошибка получения данных!\n${error.message}`)
+            })
     }
 
-    changeData(url, method, requestParameters = '', data = {}) {
+    changeData(url, method, urlParameters = '', data = {}) {
+        let requestParameters
         if (method !== 'DELETE') {
-            return fetch(`${url}${requestParameters}`, {
+            requestParameters = {
                 method: method,
                 body: JSON.stringify(data),
                 headers: {
                     "Content-Type": "application/json",
                 },
-            }).then(response => response.json())
+            }
         } else {
-            return fetch(`${url}${requestParameters}`, {
+            requestParameters = {
                 method: method,
-            }).then(response => response.json())
+            }
         }
+
+        return fetch(`${url}${urlParameters}`, requestParameters)
+            .then(response => response.json())
+            .catch(error => {
+                console.log(`Ошибка отправки данных!\n${error.message}`)
+            })
     }
 }
