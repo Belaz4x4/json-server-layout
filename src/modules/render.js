@@ -31,6 +31,7 @@ export const render = (users) => {
         });
     } catch (error) {
         console.log(`Ошибка рендеринга!\n${error.message}`)
+
         const errorBlock = document.createElement('div')
         errorBlock.innerHTML = `<div style="text-align: center; color: red; font-size: 22px;">Произошла ошибка, данные не были получены!</div>`
         document.querySelector('.table').after(errorBlock)
