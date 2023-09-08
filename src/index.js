@@ -11,11 +11,18 @@ import { searchUsers } from "./modules/searchUsers";
 const url = 'https://grey-amethyst-hydrogen.glitch.me/users/' //rs/
 
 window.userService = new UserService // мы создаем новое поле в глобальном объекте window, после чего это поле может вызываться откуда угодно.
-userService.getData(url).then(data => {
-    render(data)
-})
+
+const start = (url) => {
+    const loader = document.querySelector('.loading-container')
+    loader.style.display = 'block'
+    userService.getData(url).then(data => {
+        loader.style.display = 'none'
+        render(data)
+    })
+}
 
 
+start(url)
 addUsers(url)
 removeUsers(url)
 changePermissions(url)

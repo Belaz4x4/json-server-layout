@@ -1,0 +1,56 @@
+.loading-container{
+    min-height: 6rem;
+    display: none;
+}
+
+.loading-header{
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.loading{
+    display: flex;
+    justify-content: center;
+}
+
+.point{
+    width: 1rem;
+    height: 1rem;
+    
+    border-radius: 50%;
+    background-color: #888c8c;
+
+    animation-name: increasing;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    &:not(:first-child){
+        margin-left: 1.2rem;
+    }
+
+    &:nth-child(2){
+        animation-delay: 666ms;
+    }
+
+    &:nth-child(3){
+        animation-delay: 1333ms;
+    }
+}
+
+@keyframes increasing {
+    0% {
+        transform: scale(1); 
+    }    
+    25% {
+        transform: scale(1.3); 
+        background-color: #3a3b3b;
+    }    
+    50% {
+        transform: scale(1);
+        background-color: #888c8c;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
